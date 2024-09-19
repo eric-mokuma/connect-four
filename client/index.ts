@@ -1,94 +1,78 @@
-import { Chip } from '../client/types'
+import { Chip } from './hook/types'
 
-const diagonals = [
-  [3, 9, 15, 21],
-  [4, 10, 16, 22, 28],
-  [5, 11, 17, 23, 29, 35],
-  [6, 12, 18, 24, 30, 36, 42],
-  [13, 19, 25, 31, 37, 43],
-  [20, 26, 32, 38, 44],
-  [27, 33, 39, 45],
-  [3, 11, 19, 27],
-  [2, 10, 18, 26, 34],
-  [1, 9, 17, 25, 33, 41],
-  [0, 8, 16, 24, 32, 40, 48],
-  [7, 15, 23, 31, 39, 47],
-  [14, 22, 30, 38, 46],
-  [21, 29, 37, 45],
-]
-
-export const generateBoard = () => {
-  const board = []
-  let x = 0
-  let y = 0
-  const max = 6
-  for (let i = 0; i < 49; i++) {
-    if (x > max) {
-      y++
-      x = 0
+export const generateBoard = (): Chip[] => {
+  const board: Chip[] = []
+  for (let y = 0; y < 6; y++) {
+    for (let x = 0; x < 7; x++) {
+      board.push({
+        value: null,
+        position: { x, y },
+        index: y * 7 + x,
+      })
     }
-    board.push({ value: null, position: { x, y }, index: i })
-    x += 1
   }
   return board
 }
 
-export const checkForPlayerWin = (board: Chip[]) => {
-  let playerWon: string | null = null
-  for (let i = 0; i < 7; i++) {
-    const row = board.filter((chip) => chip.position.y === i)
-    const isMatch = checkForFourInARow(row)
+export const checkForPlayerWin = (board: Chip[]): 'red' | 'yellow' | null => {
+  const directions = [
+    { x: 1, y: 0 },
+    { x: 0, y: 1 },
+    { x: 1, y: 1 },
+    { x: 1, y: -1 },
+  ]
 
-    if (isMatch) {
-      playerWon = isMatch
-    }
-  }
+  const isWinningMove = (
+    x: number,
+    y: number,
+    player: 'red' | 'yellow',
+  ): boolean => {
+    for (const { x: dx, y: dy } of directions) {
+      let count = 1
 
-  for (let i = 0; i < 7; i++) {
-    const column = board.filter((chip) => chip.position.x === i)
-    const isMatch = checkForFourInARow(column)
-
-    if (isMatch) {
-      playerWon = isMatch
-    }
-  }
-
-  for (const diagonal of diagonals) {
-    const computedDiagonal = []
-    for (const index of diagonal) {
-      computedDiagonal.push(board[index])
-    }
-
-    const isMatch = checkForFourInARow(computedDiagonal)
-    if (isMatch) {
-      playerWon = isMatch
-    }
-  }
-
-  return playerWon
-}
-
-const checkForFourInARow = (chips: Chip[]): string | null => {
-  let currentValue: string | null = null
-  let counter = 1
-
-  for (const chip of chips) {
-    if (chip.value === null) {
-      counter = 1
-    } else if (chip.value !== currentValue) {
-      currentValue = chip.value
-      counter = 1
-    } else if (chip.value === currentValue) {
-      counter = counter + 1
-      if (counter >= 4) {
-        break
+      for (let step = 1; step < 4; step++) {
+        const newX = x + dx * step
+        const newY = y + dy * step
+        if (
+          board.find(
+            (chip) => chip.position.x === newX && chip.position.y === newY,
+          )?.value === player
+        ) {
+          count++
+        } else {
+          break
+        }
       }
+
+      for (let step = 1; step < 4; step++) {
+        const newX = x - dx * step
+        const newY = y - dy * step
+        if (
+          board.find(
+            (chip) => chip.position.x === newX && chip.position.y === newY,
+          )?.value === player
+        ) {
+          count++
+        } else {
+          break
+        }
+      }
+
+      if (count >= 4) return true
     }
+    return false
   }
 
-  if (counter >= 4) {
-    return currentValue
+  for (const chip of board) {
+    if (
+      chip.value !== null &&
+      isWinningMove(chip.position.x, chip.position.y, chip.value)
+    ) {
+      return chip.value
+    }
   }
 
   return null
 }
+
+export * from './hook/types'

@@ -1,15 +1,18 @@
 import React from 'react'
-import Button from './Btn'
+import Button from './Button'
+import styles from './Board.module.css'
 
 interface HeaderProps {
   onRestart: () => void
+  onLeaveMatch: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({ onRestart }) => {
+const Header: React.FC<HeaderProps> = ({ onRestart, onLeaveMatch }) => {
   return (
-    <div className="header-wrapper">
-      <h2 className="header-title">Connect four in React</h2>
+    <div className={styles.headerWrapper}>
+      <h1 className={styles.headerTitle}>CONNECT FOUR</h1>
       <Button onClick={onRestart}>Restart</Button>
+      <Button onClick={onLeaveMatch}>Leave Match</Button>
     </div>
   )
 }
