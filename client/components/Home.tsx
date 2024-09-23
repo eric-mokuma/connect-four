@@ -1,55 +1,72 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Board.module.css'
 
+// Define the Home component
 export default function Home() {
-  const [player1Name, setPlayer1Name] = useState('')
-  const [player2Name, setPlayer2Name] = useState('')
-  const navigate = useNavigate()
+  // State to hold the names of the players
+  const [player1Name, setPlayer1Name] = useState('') // Player 1's name
+  const [player2Name, setPlayer2Name] = useState('') // Player 2's name
+  const navigate = useNavigate() // Initialize the navigate function for routing
 
+  // Function to handle the start game event
   const handleStartGame = (e) => {
-    e.preventDefault()
-    if (player1Name && player2Name) {
+    e.preventDefault() // Prevent default form submission behavior
+    // Check if both player names are provided
+    if (player1Name.trim() && player2Name.trim()) {
+      // Store player names in local storage for later use
       localStorage.setItem('player1Name', player1Name)
       localStorage.setItem('player2Name', player2Name)
+      // Navigate to the game page
       navigate('/game')
+    } else {
+      // Alert the user to enter names for both players
+      alert('Please enter names for both players.')
     }
   }
 
+  // Render the component
   return (
-    <div className="mx-auto block max-w-sm rounded-lg bg-white p-6 shadow-4 dark:bg-surface-dark">
-      <h1 className="text-center mb-4">Please enter your Names</h1>
-      <form onSubmit={handleStartGame}>
-        <div className="relative mb-6">
+    <div className="home-container">
+      {' '}
+      {/* Main container for the Home component */}
+      <h1 className="home-title">Connect Four</h1> {/* Title of the game */}
+      <p className="home-paragraph">
+        Welcome to Connect Four! Players take turns dropping colored discs into
+        a grid. The first player to connect four of their discs vertically,
+        horizontally, or diagonally wins!
+      </p>
+      <h2 className="home-subtitle">Please enter your Names</h2>{' '}
+      {/* Subtitle for input section */}
+      <form onSubmit={handleStartGame} className="home-form">
+        {' '}
+        {/* Form for player name input */}
+        <div className="input-container">
+          {' '}
+          {/* Container for Player 1's input */}
           <input
-            type="text"
-            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
-            placeholder="Player 1 Name"
-            value={player1Name}
-            onChange={(e) => setPlayer1Name(e.target.value)}
+            type="text" // Input field for text
+            className="home-input" // CSS class for styling
+            placeholder="Enter your name" // Placeholder text for guidance
+            value={player1Name} // Bind input value to state
+            onChange={(e) => setPlayer1Name(e.target.value)} // Update state on input change
           />
-          <label className="absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary">
-            Player 1 Name
-          </label>
         </div>
-
-        <div className="relative mb-6">
+        <div className="input-container">
+          {' '}
+          {/* Container for Player 2's input */}
           <input
-            type="text"
-            className="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary dark:text-white dark:placeholder:text-neutral-300"
-            placeholder="Player 2 Name"
-            value={player2Name}
-            onChange={(e) => setPlayer2Name(e.target.value)}
+            type="text" // Input field for text
+            className="home-input" // CSS class for styling
+            placeholder="Enter your name" // Placeholder text for guidance
+            value={player2Name} // Bind input value to state
+            onChange={(e) => setPlayer2Name(e.target.value)} // Update state on input change
           />
-          <label className="absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary">
-            Player 2 Name
-          </label>
         </div>
-
-        <button
-          type="submit"
-          className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 focus:bg-primary-accent-300 focus:outline-none"
-        >
-          Start Game
+        <button type="submit" className="home-button">
+          {' '}
+          {/* Button to submit the form */}
+          VALID GAME
         </button>
       </form>
     </div>
