@@ -4,7 +4,7 @@ import { Chip, CurrentPlayer } from './types'
 
 type PlayerKey = 'red' | 'yellow'
 
-const useGameBoard = () => {
+export default function useGameBoard() {
   const [board, setBoard] = useState<Chip[][]>(generateBoard())
   const [currentPlayer, setCurrentPlayer] = useState<CurrentPlayer>('red')
   const [isGameFinished, setIsGameFinished] = useState<boolean>(false)
@@ -30,7 +30,6 @@ const useGameBoard = () => {
       setIsGameFinished(true)
       setWinner(winningPlayer)
 
-      // Ensure winningPlayer is either 'Red' or 'Yellow'
       const playerKey: PlayerKey = winningPlayer.toLowerCase() as PlayerKey
 
       setScores((prevScores) => ({
@@ -63,5 +62,3 @@ const useGameBoard = () => {
     scores,
   }
 }
-
-export default useGameBoard

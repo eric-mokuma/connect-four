@@ -8,7 +8,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background-color: white;
+  background-color: #abc2e8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,6 +25,7 @@ div#root {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .content {
@@ -89,7 +90,7 @@ div#root {
 }
 
 .default {
-  background-color: rgb(121, 69, 255);
+  background-color: rgb(253, 253, 255);
 }
 
 .chip:hover {
@@ -121,7 +122,7 @@ div#root {
 }
 
 .header-title {
-  color: black; /* Adjusted for visibility */
+  color: black;
   font-size: 24px;
 }
 
@@ -186,15 +187,22 @@ button:hover {
   text-align: center;
   margin: 10px;
   border-radius: 8px;
-  background-color: #f0f0f0;
+  color: white;
 }
 
 .playerScore h3 {
   margin: 0;
-  color: navy;
 }
 
 .playerScore p {
   font-size: 1.2rem;
-  color: #555;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
+  width: 100%;
+  position: relative;
 }

@@ -8,7 +8,11 @@ interface BoardProps {
   onChipClick: (columnIndex: number) => void
 }
 
-const Board = ({ board, currentPlayer, onChipClick }: BoardProps) => {
+export default function Board({
+  board,
+  currentPlayer,
+  onChipClick,
+}: BoardProps) {
   if (!Array.isArray(board) || !Array.isArray(board[0])) {
     return <div>Error: Invalid board structure.</div>
   }
@@ -44,5 +48,3 @@ const Board = ({ board, currentPlayer, onChipClick }: BoardProps) => {
     </div>
   )
 }
-
-export default Board

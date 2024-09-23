@@ -1,4 +1,3 @@
-import React from 'react'
 import Button from './Button'
 import styles from './Board.module.css'
 
@@ -7,7 +6,7 @@ interface HeaderProps {
   onLeaveMatch: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({ onRestart, onLeaveMatch }) => {
+export default function Header({ onRestart, onLeaveMatch }: HeaderProps) {
   return (
     <div className={styles.headerWrapper}>
       <h1 className={styles.headerTitle}>CONNECT FOUR</h1>
@@ -16,5 +15,3 @@ const Header: React.FC<HeaderProps> = ({ onRestart, onLeaveMatch }) => {
     </div>
   )
 }
-
-export default Header

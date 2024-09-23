@@ -3,8 +3,6 @@ interface ButtonProps {
   children: React.ReactNode
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+export default function Button({ onClick, children }: ButtonProps) {
   return <button onClick={onClick}>{children}</button>
 }
-
-export default Button

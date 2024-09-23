@@ -1,11 +1,16 @@
-import React from 'react'
-
 interface PlayerTurnProps {
-  currentPlayer: string
+  currentPlayer: 'red' | 'yellow'
 }
 
-const PlayerTurn: React.FC<PlayerTurnProps> = ({ currentPlayer }) => {
-  return <div className="player-turn">{currentPlayer}&apos;s turn</div>
-}
+const player1Name = localStorage.getItem('player1Name') || 'Player 1'
+const player2Name = localStorage.getItem('player2Name') || 'Player 2'
 
-export default PlayerTurn
+export default function PlayerTurn({ currentPlayer }: PlayerTurnProps) {
+  return (
+    <div className="player-turn">
+      {currentPlayer === 'red'
+        ? `${player1Name}'s turn`
+        : `${player2Name}'s turn`}
+    </div>
+  )
+}
