@@ -72,7 +72,7 @@ export default function Layout() {
         />
       </div>
       <footer className={styles.footer}>
-        <p>@eric mokuma 2024, +642885144208</p>{' '}
+        <p>@eric mokuma 2024, +64 28 8514 4208</p>{' '}
         {/* Footer with contact information */}
       </footer>
       <Outlet /> {/* Render any child routes here */}

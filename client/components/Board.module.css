@@ -198,67 +198,138 @@ button:hover {
   font-size: 1.2rem;
 }
 
-/* Home.css*/
-.home-container {
+/* Championship Styles */
+.championship-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.groups-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.group {
+  margin: 20px;
+  padding: 10px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.group h2 {
+  color: #007bff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .groups-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Outer wrapper to center the content */
+.wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-  width: 100%;
-  background-color: #00b2ff;
+  background-color: #00c6d7;
+}
+
+/* Container for the main content */
+.home-container {
+  width: 50%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .home-title {
-  font-size: 2.5rem;
-  color: white;
-  margin-bottom: 20px;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
 .home-paragraph {
-  width: 80%;
-  text-align: center;
-  color: white;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-size: 1.2em;
   margin-bottom: 20px;
+  padding: 0 30px;
+}
+
+.restart-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.restart-button:hover {
+  background-color: #0056b3;
 }
 
 .home-subtitle {
-  font-size: 1.5rem;
-  color: white;
+  font-size: 1.8em;
   margin-bottom: 10px;
 }
 
 .home-form {
-  width: 80%;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-.input-container {
-  margin-bottom: 20px;
+.input-group {
+  display: flex;
+  gap: 20px;
 }
 
-.home-input {
-  width: 100%;
+input.home-input {
   padding: 10px;
-  font-size: 1rem;
-  margin-bottom: 10px;
-  border: 2px solid white;
+  width: 200px;
+  border: 2px solid #007bff;
   border-radius: 5px;
-  color: white;
-  background-color: transparent;
+  font-size: 1em;
 }
 
 .home-button {
-  width: 100%;
-  padding: 10px 0;
   background-color: #007bff;
   color: white;
+  padding: 10px 30px;
   border: none;
   border-radius: 5px;
-  font-size: 1.2rem;
   cursor: pointer;
+  font-size: 1.2em;
 }
 
 .home-button:hover {
   background-color: #0056b3;
+}
+
+.footer {
+  margin-top: 20px;
+  font-size: 0.9em;
 }
