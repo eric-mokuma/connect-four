@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <div className="wrapper">
+    <div className="mx-auto w-4/5 block rounded-lg bg-white p-6 shadow-4 dark:bg-surface-dark">
       <div className="home-container">
         <h1 className="home-title">Connect Four</h1>
         <p className="home-paragraph">
