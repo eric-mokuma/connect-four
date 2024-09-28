@@ -2,12 +2,11 @@ import { Chip } from './hook/types'
 
 // Function to generate the game board with a 6x7 grid
 export const generateBoard = (): Chip[] => {
-  const board: Chip[] = [] // Initialize an empty array for the board
+  const board: Chip[] = []
   // Loop through rows (y-axis)
   for (let y = 0; y < 6; y++) {
     // Loop through columns (x-axis)
     for (let x = 0; x < 7; x++) {
-      // Push a new Chip object for each position on the board
       board.push({
         value: null, // Initially, no player has placed a chip here
         position: { x, y }, // Store the chip's position
@@ -15,7 +14,7 @@ export const generateBoard = (): Chip[] => {
       })
     }
   }
-  return board // Return the completed board
+  return board
 }
 
 // Function to check for a winning player on the board
@@ -48,16 +47,16 @@ export const checkForPlayerWin = (board: Chip[]): 'red' | 'yellow' | null => {
             (chip) => chip.position.x === newX && chip.position.y === newY,
           )?.value === player
         ) {
-          count++ // Increment count if it's a match
+          count++
         } else {
-          break // Stop checking if there's no match
+          break
         }
       }
 
       // Check in the negative direction
       for (let step = 1; step < 4; step++) {
-        const newX = x - dx * step // Calculate the new x position
-        const newY = y - dy * step // Calculate the new y position
+        const newX = x - dx * step
+        const newY = y - dy * step
         // Check if the chip in the new position belongs to the current player
         if (
           board.find(
@@ -87,8 +86,7 @@ export const checkForPlayerWin = (board: Chip[]): 'red' | 'yellow' | null => {
     }
   }
 
-  return null // No winner found, return null
+  return null
 }
 
-// Export types for use in other modules
 export * from './hook/types'

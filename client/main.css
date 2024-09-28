@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: #abc2e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#root {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.score-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.scoreplayer1 {
+  margin-left: auto;
+}
+
+.scoreplayer2 {
+  margin-right: auto;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.chip {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid black;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  text-align: center;
+  cursor: default;
+}
+
+.red {
+  background-color: rgb(253, 102, 135);
+}
+
+.yellow {
+  background-color: rgb(255, 206, 103);
+}
+
+.default {
+  background-color: rgb(253, 253, 255);
+}
+
+.chip:hover {
+  border: 3px solid black;
+}
+
+.chip.hover-red:hover {
+  border: 3px solid rgb(253, 102, 135);
+  cursor: pointer;
+}
+
+.chip.hover-yellow:hover {
+  border: 3px solid rgb(255, 206, 103);
+  cursor: pointer;
+}
+
+.chip.hover-default:hover {
+  cursor: pointer;
+}
+
+.header-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  justify-content: space-between;
+  height: 50px;
+  margin: 16px 0;
+  align-items: center;
+}
+
+.header-title {
+  color: black;
+  font-size: 24px;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.winner-board {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 140px;
+  border: 3px solid black;
+  border-radius: 24px;
+  justify-content: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background-color: white;
+}
+
+.win-message {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+  color: green;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.playerScore {
+  border: 2px solid #333;
+  padding: 10px;
+  text-align: center;
+  margin: 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+.playerScore h3 {
+  margin: 0;
+}
+
+.playerScore p {
+  font-size: 1.2rem;
+}

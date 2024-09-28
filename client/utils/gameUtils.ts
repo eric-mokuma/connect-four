@@ -41,17 +41,17 @@ export const checkForPlayerWin = (board: Chip[][]): CurrentPlayer | null => {
     }
   }
 
-  return null // No winner found
+  return null
 }
 
 // Helper function to check a specific direction for a win
 const checkDirection = (
   board: Chip[][],
   chip: Chip,
-  dx: number, // Change in x direction
-  dy: number, // Change in y direction
+  dx: number,
+  dy: number,
 ): boolean => {
-  let count = 1 // Count of connected chips (starting with the current chip)
+  let count = 1
 
   // Check in the positive direction (dx, dy)
   for (let i = 1; i < 4; i++) {
@@ -77,13 +77,13 @@ const checkDirection = (
     const foundChip = board
       .flat()
       .find((c) => c.position.x === x && c.position.y === y)
-    // If a matching chip is found, increment the count
+
     if (foundChip && foundChip.value === chip.value) {
       count++
     } else {
-      break // Stop checking if no match is found
+      break
     }
   }
 
-  return count >= 4 // Return true if there are 4 or more connected chips
+  return count >= 4
 }
