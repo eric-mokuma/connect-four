@@ -39,7 +39,9 @@ export default function Board({
               role="button"
               tabIndex={0}
               onClick={() => onChipClick(colIndex)}
-              onKeyPress={(event) => handleKeyPress(event, colIndex)}
+              onKeyDown={(event: React.KeyboardEvent) =>
+                handleKeyPress(event, colIndex)
+              }
               aria-label={`Place a chip in column ${colIndex + 1}`}
             >
               <div className={`chip ${chip.value ? chip.value : 'default'}`} />

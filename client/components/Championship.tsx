@@ -55,7 +55,7 @@ export default function Championship() {
   }
 
   const startNextMatch = (groups: Player[][]) => {
-    const availableGroups = groups.filter((group) => group.length > 1) // Ensure there are players in the group
+    const availableGroups = groups.filter((group) => group.length > 1)
     if (availableGroups.length > 0) {
       const randomGroup =
         availableGroups[Math.floor(Math.random() * availableGroups.length)]

@@ -7,7 +7,6 @@ import useGameBoard from '../hook/useGameBoard'
 import '../main.css'
 import Button from './Button'
 
-// Main Layout component for the game
 export default function Layout() {
   const {
     board,
@@ -39,19 +38,31 @@ export default function Layout() {
     throw new Error('Function not implemented.')
   }
 
+  const developerName = 'Eric Mokuma' // Add your name or fetch dynamically if needed
+
   return (
     <div className="layout">
       {/* Header component */}
       <Header onRestart={restartGame} onLeaveMatch={leaveMatch} />
 
       {isGameFinished && (
-        <div className="win-message">
-          {winner ? (
-            <h2>{winner === 'red' ? player1Name : player2Name} wins!</h2>
-          ) : (
-            <h2>It is a draw!</h2>
-          )}
-          <p>The game will restart shortly...</p>
+        <div>
+          <div className="win-message">
+            {winner ? (
+              <h2>{winner === 'red' ? player1Name : player2Name} wins!</h2>
+            ) : (
+              <h2>It is a draw!</h2>
+            )}
+            <p>The game will restart shortly...</p>
+          </div>
+          <div className="win-message">
+            {winner ? (
+              <h2>{winner === 'red' ? player1Name : player2Name} wins!</h2>
+            ) : (
+              <h2>It is a draw!</h2>
+            )}
+            <p>The game will restart shortly...</p>
+          </div>
         </div>
       )}
 
@@ -79,7 +90,8 @@ export default function Layout() {
       </div>
 
       <footer className="footer">
-        <p>@eric mokuma 2024, +64 28 8514 4208</p>
+        <p>© {new Date().getFullYear()} All rights reserved</p>
+        <p>Developed by: {developerName}</p>
       </footer>
       <Outlet />
     </div>
